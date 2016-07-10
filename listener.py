@@ -27,7 +27,7 @@ def webhook():
                     digestmod=hashlib.sha1).hexdigest()
     if request.headers.get('X-Hub-Signature').split('=')[1] != signature:
         abort(401)
-    repo = json.loads(request.values.get('payload'))['repository']['name']
+    repo = request.json.get('repository', {'name': None})['name']
     if repo in projects:
         Popen([basedir+'/scripts/refresh.sh', repo], stdout=PIPE, stderr=PIPE)
     return 'OK'
