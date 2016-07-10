@@ -2,6 +2,7 @@
 
 import hashlib
 import hmac
+import json
 import os
 import urllib
 
@@ -26,11 +27,9 @@ def webhook():
                     digestmod=hashlib.sha1).hexdigest()
     if request.headers.get('X-Hub-Signature').split('=')[1] != signature:
         abort(401)
-    commit = request.values.get('commits', [None])[0]
-    if commit:
-        repo = commit['repository']
-        if repo in projects:
-            Popen([basedir+'/scripts/refresh.sh', repo], stdout=PIPE, stderr=PIPE)
+    repo = json.loads(request.values.get('payload'))['repository']['name']
+    if repo in projects:
+        Popen([basedir+'/scripts/refresh.sh', repo], stdout=PIPE, stderr=PIPE)
     return 'OK'
 
 if __name__ == '__main__':
