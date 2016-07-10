@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/..
 
 if [[ $# -eq 0 ]] ; then
     echo "Which component do you want to deploy?"
