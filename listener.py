@@ -28,7 +28,8 @@ def webhook():
     if request.headers.get('X-Hub-Signature').split('=')[1] != signature:
         abort(401)
     repo = request.json.get('repository', {'name': None})['name']
-    if repo in projects:
+    branch = request.json.get('ref', 'x'*9)[-6:]
+    if repo in projects and branch == 'master':
         Popen([basedir+'/scripts/refresh.sh', repo], stdout=PIPE, stderr=PIPE)
     return 'OK'
 
