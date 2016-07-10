@@ -18,3 +18,5 @@ source $BASEDIR/venv/bin/activate
 pip install -r $BASEDIR/requirements.txt
 deactivate
 
+echo "Remember to write your settings.cfg!"
+
