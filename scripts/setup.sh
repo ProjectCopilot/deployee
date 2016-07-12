@@ -18,5 +18,9 @@ source $BASEDIR/venv/bin/activate
 pip install -r $BASEDIR/data/requirements.txt
 deactivate
 
-echo "Remember to write your settings.cfg!"
+echo "Setting up IP configurations. You may be asked for an admin password."
+sudo $BASEDIR/scripts/setup_ip_tables.sh
+
+echo "Configuring your settings."
+$BASEDIR/scripts/configure.sh
 
