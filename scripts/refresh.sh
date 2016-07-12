@@ -38,9 +38,9 @@ fi
 tmux kill-session -t "$1" &>/dev/null || true
 tmux new -s "$1" -d
 if [ $QUIET ]; then
-    tmux send -t "$1" "bash deploy.sh" ENTER
+    tmux send -t "$1" "bash $BASEDIR/components/$1/deploy.sh" ENTER
 else
-    tmux send -t "$1" "bash deploy.sh 2>$(tty)" ENTER
+    tmux send -t "$1" "bash $BASEDIR/components/$1/deploy.sh 2>$(tty)" ENTER
 fi
 sleep 1 # Wait for response
 

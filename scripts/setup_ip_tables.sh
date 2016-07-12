@@ -7,3 +7,5 @@ if ! cp $BASEDIR/data/iptables.conf /etc/iptables/rules.v4; then
     echo "Install iptables_persist and retry setup_ip_tables.sh"
 fi
 
+iptables-restore < /etc/iptables/rules.v4
+
