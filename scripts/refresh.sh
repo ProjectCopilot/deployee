@@ -7,22 +7,22 @@ usage() {
     echo "Usage: $0 [-gq] <component>"
 }
 
-if [[ $# -eq 0 ]] ; then
+if [[ $# -eq 0 ]]; then
     usage
     exit 127
 fi
 
 # Check for flag
 OPTIND=1
-while getopts "gqh" o ; do # set $o to the next passed option
-  case "$o" in 
-    g) SKIP_GIT=true
-       ;;
-    q) QUIET=true 
-       ;;
-    h) print "$usage"
-       exit
-       ;;
+while getopts "gqh" o; do # set $o to the next passed option
+    case "$o" in 
+        g) SKIP_GIT=true
+           ;;
+        q) QUIET=true
+           ;;
+        h) usage
+           exit
+           ;;
   esac
 done
 
