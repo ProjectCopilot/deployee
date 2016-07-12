@@ -13,7 +13,7 @@ from subprocess import PIPE
 from subprocess import Popen
 
 basedir = os.path.dirname(os.path.abspath(__file__))
-with open(basedir + '/projects.csv') as f:
+with open(basedir + '/data/projects.csv') as f:
     # Gets us a list of repo names
     projects = map(lambda x: x.rsplit('/', 1)[1][:-4], f.read().splitlines())
 
