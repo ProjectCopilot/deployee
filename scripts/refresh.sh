@@ -4,7 +4,7 @@ set -eo pipefail
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/..
 
 usage() {
-    echo "Usage: $0 [-q] <component>"
+    echo "Usage: $0 [-gq] <component>"
 }
 
 if [[ $# -eq 0 ]] ; then
@@ -14,8 +14,10 @@ fi
 
 # Check for flag
 OPTIND=1
-while getopts "qh" o ; do # set $o to the next passed option
+while getopts "gqh" o ; do # set $o to the next passed option
   case "$o" in 
+    g) SKIP_GIT=true
+       ;;
     q) QUIET=true 
        ;;
     h) print "$usage"
@@ -27,8 +29,10 @@ done
 # Shift to the first legit argument
 shift $(($OPTIND - 1))
 
-cd $BASEDIR/components/"$1"
-git pull origin master
+if [ ! $SKIP_GIT ]; then
+    cd $BASEDIR/components/"$1"
+    git pull origin master
+fi
 
 # Refresh background process"
 tmux kill-session -t "$1" &>/dev/null || true
