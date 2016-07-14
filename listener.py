@@ -30,7 +30,7 @@ def webhook():
     repo = request.json.get('repository', {'name': None})['name']
     branch = request.json.get('ref', 'x'*9)[-6:]
     if repo in projects and branch == 'master':
-        Popen([basedir+'/scripts/refresh.sh', repo], stdout=PIPE, stderr=PIPE)
+        Popen([basedir+'/scripts/refresh.sh', '-v', repo], stdout=PIPE, stderr=PIPE)
     return 'OK'
 
 if __name__ == '__main__':
