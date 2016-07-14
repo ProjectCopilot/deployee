@@ -10,7 +10,7 @@ usage() {
 
 while getopts "ph" o; do
     case "$o" in 
-        p) SKIP_IP=true
+        p) SETUP_IP=true
            ;;
         h) usage 
            exit
@@ -25,10 +25,10 @@ echo "Installing Python dependencies and creating virtual environment."
 $SCRIPTSDIR/setup_python.sh
 
 if [ $SKIP_IP ]; then
-    echo "Skipping IP setup. Run scripts/setup_ip_tables.sh if you change your mind."
-else
     echo "Setting up IP configurations. You may be asked for an admin password."
     sudo $SCRIPTSDIR/setup_ip_tables.sh
+else
+    echo "Skipping IP setup. Run scripts/setup_ip_tables.sh if you change your mind."
 fi
 
 echo "Configuring your settings."
