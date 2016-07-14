@@ -8,8 +8,10 @@ usage() {
     echo "Usage: $0 [-p]"
 }
 
-while getopts "ph" o; do
+while getopts "cph" o; do
     case "$o" in 
+        c) CONFIGURE=true
+           ;;
         p) SETUP_IP=true
            ;;
         h) usage 
@@ -31,6 +33,12 @@ else
     echo "Skipping IP setup. Run scripts/setup_ip_tables.sh if you change your mind."
 fi
 
-echo "Configuring your settings."
-$SCRIPTSDIR/setup_settings.sh
+if [ $CONFIGURE ]; then
+    echo "Configuring your settings."
+    $SCRIPTSDIR/setup_settings.sh
+elif [ ! -f $BASEDIR/settings.cfg ]; then
+    echo "Skipping configuration, but settings.cfg is missing. Run configure.sh to write it."
+else
+    echo "settings.cfg exists. Run configure.sh to rewrite it."
+fi
 

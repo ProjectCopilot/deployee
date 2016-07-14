@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/..
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CONFIG=$BASEDIR/settings.cfg
 
 echo "What is your GitHub webhook secret?"
