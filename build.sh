@@ -33,6 +33,9 @@ else
     echo "Skipping IP setup. Run scripts/setup_ip_tables.sh if you change your mind."
 fi
 
+echo "Installing Git hooks."
+$SCRIPTSDIR/setups_hooks.sh
+
 if [ $CONFIGURE ]; then
     echo "Configuring your settings."
     $SCRIPTSDIR/setup_settings.sh

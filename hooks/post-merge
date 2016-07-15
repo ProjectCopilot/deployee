@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# After a merge, deployee should rebuild.
+
+./build.sh
+
