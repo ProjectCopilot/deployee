@@ -34,5 +34,7 @@ def webhook():
     return 'OK'
 
 if __name__ == '__main__':
-    app.run(host=app.config['HOST'], port=app.config['PORT'])
-
+    context = (app.config['SSL_CERT'], app.config['SSL_KEY']) \
+                if not app.config['DEBUG'] else None
+    app.run(host=app.config['HOST'], port=app.config['PORT'], ssl_context=context,
+            debug=app.config['DEBUG'])
