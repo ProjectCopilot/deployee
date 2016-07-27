@@ -26,7 +26,7 @@ $SCRIPTSDIR/setup_components.sh
 echo "Installing Python dependencies and creating virtual environment."
 $SCRIPTSDIR/setup_python.sh
 
-if [ $SKIP_IP ]; then
+if [ $SETUP_IP ]; then
     echo "Setting up IP configurations. You may be asked for an admin password."
     sudo $SCRIPTSDIR/setup_ip_tables.sh
 else
@@ -34,7 +34,7 @@ else
 fi
 
 echo "Installing Git hooks."
-$SCRIPTSDIR/setups_hooks.sh
+$SCRIPTSDIR/setup_hooks.sh
 
 if [ $CONFIGURE ]; then
     echo "Configuring your settings."
