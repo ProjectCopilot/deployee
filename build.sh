@@ -34,7 +34,7 @@ else
 fi
 
 echo "Installing Git hooks."
-$SCRIPTSDIR/setups_hooks.sh
+$SCRIPTSDIR/setup_hooks.sh
 
 if [ $CONFIGURE ]; then
     echo "Configuring your settings."
