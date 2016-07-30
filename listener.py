@@ -22,6 +22,9 @@ app.config.from_envvar('DEPLOYEE_SETTINGS')
 
 @app.route('/', methods=['POST'])
 def webhook():
+    if request.headers.get('X-Uptime-Check') == 'True':
+        # This is an uptime check. Don't run refresh.
+        return 'OK'
     # Verify the body
     signature = hmac.new(app.config['HUB_SECRET'], msg=request.get_data(),
                     digestmod=hashlib.sha1).hexdigest()
