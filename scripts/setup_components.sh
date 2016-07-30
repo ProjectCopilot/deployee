@@ -10,5 +10,5 @@ cd $COMPDIR
 
 while read p; do
     git clone $p
-done <$BASEDIR/data/projects.csv
+done <$BASEDIR/data/projects.lst
 
