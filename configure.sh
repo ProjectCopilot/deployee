@@ -12,8 +12,8 @@ echo "What port do you want to run the listener on?"
 read PORT
 
 cat <<EOF > $CONFIG
-HUB_SECRET = '$HUB_SECRET'
-HOST = '$HOST'
-PORT = $PORT
+HUB_SECRET='$HUB_SECRET'
+HOST='$HOST'
+PORT=$PORT
 EOF
 
