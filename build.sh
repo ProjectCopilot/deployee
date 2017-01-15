@@ -45,3 +45,4 @@ else
     echo "settings.cfg exists. Run configure.sh to rewrite it."
 fi
 
+echo "Heads up:If you you should do that by going to each of the components and running configure.sh."
